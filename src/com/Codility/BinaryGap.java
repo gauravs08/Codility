@@ -32,28 +32,28 @@ large6 n=1610612737=1100000000000000000000000000001_2✔OK
 public class BinaryGap {
 
 	public int solution(int N) {
-	       String binRep = Integer.toBinaryString(N);
-	       System.out.println(binRep);
-	    int currentItr = 0;
-	    int maxZeroSeq = 0;
-	    boolean safeReturn= false;
-	    for (int index = 0; index <binRep.length(); index ++) {
-	        if (binRep.charAt(index) == '0') {
-	            
-	            ++currentItr;
-	             safeReturn = false;
-	        } else if(binRep.charAt(index) == '1'){
-	            safeReturn = true;
-	            maxZeroSeq = Math.max(maxZeroSeq, currentItr);
-	            currentItr = 0;
-	        }
-	    }
-	    if (! safeReturn ) {
-	              return maxZeroSeq;
-	           } 
-	    return Math.max(maxZeroSeq, currentItr);
+		String binRep = Integer.toBinaryString(N);
+		System.out.println(binRep);
+		int currentItr = 0;
+		int maxZeroSeq = 0;
+		boolean safeReturn = false;
+		for (int index = 0; index < binRep.length(); index++) {
+			if (binRep.charAt(index) == '0') {
 
-	    }
+				++currentItr;
+				safeReturn = false;
+			} else if (binRep.charAt(index) == '1') {
+				safeReturn = true;
+				maxZeroSeq = Math.max(maxZeroSeq, currentItr);
+				currentItr = 0;
+			}
+		}
+		if (!safeReturn) {
+			return maxZeroSeq;
+		}
+		return Math.max(maxZeroSeq, currentItr);
+
+	}
 
 	public static void main(String[] args) {
 		BinaryGap bg = new BinaryGap();

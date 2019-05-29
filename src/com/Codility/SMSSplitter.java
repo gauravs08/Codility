@@ -1,9 +1,8 @@
 package com.Codility;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /*To split the string S of word in K size where each word should not break
  *  return the max size of array it will consume to hold the SMS
@@ -25,10 +24,28 @@ public static int solution(String S, int K) {
 		return -1;
 	
 	String[] words = S.split("\\s+");
-	
-	
 	List<String> res = new ArrayList<>();
-
+	String str ="";
+	for(int i = 0; i < words.length ;i++) {
+		
+		if(words[i].length() > K) {
+			return -1;
+		}
+		if(str.length() <= K-1 && str.length()+words[i].length()+1 <= K) {
+			str += words[i]+" ";
+		}else {
+			res.add(str);
+			str=words[i]+" ";
+			
+		}
+		if(i==words.length -1) {
+			res.add(str);
+		}
+	}
+	System.out.println(Arrays.toString(res.toArray()));
+	return res.size();
+	
+/*
     Pattern p = Pattern.compile("\\b.{1," + (K+1) + "}\\b\\W?");
     Matcher m = p.matcher(S);
     
@@ -37,7 +54,7 @@ public static int solution(String S, int K) {
     /*   if(wordCount > m.groupCount()){
     	return -1;
     }*/
-    while(m.find()) {
+  /*  while(m.find()) {
            System.out.println(m.group().trim());   
             if(m.group().trim().length() >(K)){
             	return -1;
@@ -47,16 +64,21 @@ public static int solution(String S, int K) {
     
     
     return res.size();
-        
-	 //return (size<1 || str==null) ? null : str.split("(?<=\\G.{"+size+"})");
-	
+     /*   int size =K;
+        String str = S;
+        String [] strarr =  str.split("(?<=\\G.{"+size+"})");
+        Stream stream = Stream.of(strarr);
+        stream.forEach(System.out::println);
+	 return (size<1 || str==null) ? "-1" :"0";
+	*/
 	
     }
 	
 	
 	public static void main(String args[]) {
-		SMSSplitter T = new SMSSplitter();
-	int res=	T.solution("SMS 12345678912345 are really short ",12);
+		String str ="SMS messages is really long ";
+		System.out.println(str);
+	int res=	solution(str,12);
 	System.out.println(res);
 	}
 

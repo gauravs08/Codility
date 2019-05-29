@@ -1,7 +1,9 @@
 package com.Codility;
 /*PROBLEM:
  * Count minimal number of jumps from position X to Y.
-A small frog wants to get to the other side of the road. The frog is currently located at position X and wants to get to a position greater than or equal to Y. The small frog always jumps a fixed distance, D.
+A small frog wants to get to the other side of the road. 
+The frog is currently located at position X and wants to get to a position greater than or equal to Y.
+The small frog always jumps a fixed distance, D.
 Count the minimal number of jumps that the small frog must perform to reach its target.
 Write a function:
 class Solution { public int solution(int X, int Y, int D); }
@@ -46,41 +48,42 @@ many small jumps ✘TIMEOUT ERROR
 running time: 1.54 sec., time limit: 0.10 sec.*/
 public class FrogJmp {
 
-	public int solution(int X, int Y,int D){
-		
+	public int solution(int X, int Y, int D) {
+
 		int count = 0;
-		if(Y < X){
+		if (Y < X) {
 			return 0;
 		}
-		if(X <=0 || Y<=0){
+		if (X <= 0 || Y <= 0) {
 			return 0;
 		}
-		for( ; X<Y ;X+= D,count++);
-		
+		for (; X < Y; X += D, count++);
+
 		return count;
 	}
-	
-	//100% Score solution
-	public int solution2(int X, int Y, int D){
+
+	// 100% Score solution
+	public int solution2(int X, int Y, int D) {
 		int count = 0;
-		if(Y < X){
+		if (Y < X) {
 			return 0;
 		}
-		if(X <=0 || Y<=0){
+		if (X <= 0 || Y <= 0) {
 			return 0;
 		}
-		return  Double.valueOf(Math.ceil((Y - X) / (double) D)).intValue();
+		//for x =10 y =85 and D=30  (85-10)/30
+		return Double.valueOf(Math.ceil((Y - X) / (double) D)).intValue();
 	}
-	
+
 	public static void main(String[] args) {
 		FrogJmp fj = new FrogJmp();
 		long start = System.nanoTime();
-		
-		//int count =fj.solution(10, 100000000, 30);
-		int count =fj.solution2(1, 100000000, 10);
-		
+
+		// int count =fj.solution(10, 100000000, 30);
+		int count = fj.solution2(10, 85, 30);
+
 		long diff = System.nanoTime() - start;
-		System.out.println("took: " + diff/1000000 + "ms");
+		System.out.println("Time To execute: " + diff / 1000000 + "ms");
 		System.out.println(count);
 	}
 

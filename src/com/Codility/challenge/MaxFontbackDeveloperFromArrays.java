@@ -14,19 +14,19 @@ public class MaxFontbackDeveloperFromArrays {
 
 		int N = B.length;
 		int res = 0;
-		int CountA = 0,CountB= 0;
+		int countA = 0,countB= 0;
 		int[] equal = new int[N];
 		
 		int i = 0, j = 0;
-		for (; (CountA < F  && CountB < N -F ) && i < A.length; i++, j++) {
+		for (; (countA < F  && countB < N -F ) && i < A.length; i++, j++) {
 			if (A[i] > B[j]) {
 				System.out.println(A[i]);
 				res += A[i];
-				CountA++;
+				countA++;
 			} else if (A[i] < B[j])  {
 				System.out.println(B[j]);
 				res += B[j];
-				CountB++;
+				countB++;
 			}
 			if(A[i]==B[j]){
 				equal[i] =1;
@@ -35,25 +35,25 @@ public class MaxFontbackDeveloperFromArrays {
 		int index =0; 
 		for (int k : equal) {
 			if(k ==1){
-				if(CountA <F){
-					res += A[index];CountA++;
-				}else if(CountB <N-F){
-					res += B[index];CountB++;
+				if(countA <F){
+					res += A[index];countA++;
+				}else if(countB <N-F){
+					res += B[index];countB++;
 				}
 			}
 			index++;
 		}
 		
 		
-		while (CountA < F) {
+		while (countA < F) {
 			System.out.println(A[i]);
 			res += A[i++];
-			CountA++;
+			countA++;
 		}
-		while (CountB < N-F) {
+		while (countB < N-F) {
 			System.out.println(B[i]);
 			res += B[i++];
-			CountB++;
+			countB++;
 		}
 
 		return res;

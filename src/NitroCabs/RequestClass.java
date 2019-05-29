@@ -4,6 +4,12 @@ import java.util.Date;
 
 public class RequestClass {
 
+	private String rbrId;
+	private Integer pickUpLoc;
+	private Integer dropLoc;
+	private Date pickUpTime;
+	private Double priceAsk;
+
 	public RequestClass(String rbrId, Integer pickUpLoc, Integer dropLoc,
 			Date pickUpTime,Double priceAsk) {
 		super();
@@ -15,11 +21,6 @@ public class RequestClass {
 	}
 	
 
-	private String rbrId;
-	private Integer pickUpLoc;
-	private Integer dropLoc;
-	private Date pickUpTime;
-	private Double priceAsk;
 	
 	
 	public String getRbrId() {

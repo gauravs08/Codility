@@ -45,15 +45,22 @@ public class CyclicRotation {
 
 	public int[] solution(int[] A, int K) {
 
+		
+		// if A.length is 4 and K is 5 then effective rotation will be remainder of 5/4 =1
+		if(K >= A.length) {	
+			K = K % A.length;
+		}
 		if (A.length < 1) {
 			System.out.println("Length of array is less then 1!!!");
 			return A;
 		}
-		if (K < 1 || K> A.length) {
-			System.out.println("K index is less then 1 OR K index is more then length of array!!!");
+		if (K < 1 || K == A.length) {
+			System.out.println("K index is less then 1 OR K is equal to lenght of array!!!");
 			return A;
 		}
 
+		
+		
 		boolean allValSameCheck = Arrays.stream(A).distinct().count() == 1;
 		if (allValSameCheck) {
 			return A;
@@ -66,22 +73,19 @@ public class CyclicRotation {
 			cyclic[i] = A[size - K + i];
 		}
 
-		
 		for (int i = 0; i < size - K; ++i) {
 			cyclic[K + i] = A[i];
 		}
 
-		
 		return cyclic;
 	}
 
 	public static void main(String[] args) {
 		CyclicRotation cr = new CyclicRotation();
-		int[] A= {5,8,9,7,6,1};
-		int i = 3;
+		int[] A = { 5, 8, 9, 7, 6, 1 };
+		int i = 5;
 		System.out.println(Arrays.toString(A));
-		System.out.println("Shifting the list to >> "+ i +" Place");
+		System.out.println("Shifting the list to >> " + i + " Place");
 		System.out.println(Arrays.toString(cr.solution(A, i)));
 	}
-
 }
