@@ -99,17 +99,17 @@ public class IceyeCodility {
 		}
 	public int solution2(int [] A) {
 		int sums[] = new int[A.length];
-		var minAbsSum = Integer.MAX_VALUE;
+		int minAbsSum = Integer.MAX_VALUE;
 
 		sums[0] = 0;
 		
-		for (var i = 0; i < A.length-1; i++) {
+		for (int i = 0; i < A.length-1; i++) {
 			sums[i + 1] = A[i] + sums[i];
 		//	System.out.println(sums[i]);
 		}
 		sums = IntStream.of(sums).sorted().toArray();
 		//sums.sort();
-		for (var i = 1; i < sums.length-1; i++) {
+		for (int i = 1; i < sums.length-1; i++) {
 			minAbsSum = Math.min(minAbsSum, Math.abs(sums[i] - sums[i - 1]));
 		}
 	  

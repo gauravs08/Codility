@@ -55,7 +55,7 @@ public class CyclicRotation {
 			return A;
 		}
 		if (K < 1 || K == A.length) {
-			System.out.println("K index is less then 1 OR K is equal to lenght of array!!!");
+			System.out.println("K index is less then 1 OR K is equal to length of array!!!");
 			return A;
 		}
 
