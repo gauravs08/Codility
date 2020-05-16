@@ -57,7 +57,40 @@ public class BinaryGap {
 
 	public static void main(String[] args) {
 		BinaryGap bg = new BinaryGap();
-		int ans = bg.solution(65);
+		int ans = bg.solution100(64);
 		System.out.println(ans);
+	}
+
+	public int solution100(int N) {
+		int max_gap = 0;
+		int current_gap =0;
+		boolean counting = false;
+
+		// Using the "concept of bit manipulation" and "& operation"
+
+		while( N !=0 ){
+			System.out.println(Integer.toBinaryString(N));
+			System.out.println("N&1="+(N&1));
+			if(counting == false){    // for the first "1"
+				if( (N&1) == 1){      // note: cannot use n&1 without "()"
+					counting = true;  // start to count
+				}
+			}
+			else{                    // counting = true
+				if( (N&1) ==0){      // note: cannot use n&1 withoug "()"
+					current_gap ++;
+				}
+				else{ // N & 1 == 1
+					max_gap = Math.max(max_gap, current_gap);
+					current_gap = 0; // reset
+				}
+			}
+
+			N = N >> 1; // shift by one (right side)
+			System.out.println(N);
+			// note: cannot just write "N >> 1"
+		}
+
+		return max_gap;
 	}
 }
